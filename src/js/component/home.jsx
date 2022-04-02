@@ -42,9 +42,12 @@ const Home = () => {
 				<ul>
 					{list.map((listItem, index) => {
 						return (
-							<li key={index} className="d-flex flex row">
+							<li
+								key={index}
+								className="d-flex flex-row justify-content-center btn btn-outline-success">
 								<p> {listItem} </p>
 								<button
+									className="btn btn-primary btn-sm ms-2"
 									onClick={() => {
 										setList(
 											list.filter(
