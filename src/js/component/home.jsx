@@ -6,28 +6,39 @@ import rigoImage from "../../img/rigo-baby.jpg";
 //create your first component
 const Home = () => {
 	const [task, setTask] = useState("");
-	const [list, setlist] = useState([]);
+	const [list, setList] = useState([]);
 	return (
 		<>
-			<div>
-				<h1>Lista de Tareas </h1>
-				<input
-					type="text"
-					placeholder="Add Task"
-					onChange={(e) => {
-							setTask(e.target.value)
-						}
-					}
-					value={task}
-				/>
-				<button
-					onClick={() => {
-						setList([...list, task]);
-						setTask("");
-					}}>
-					Submit
-				</button>
+			<div className="card text-center  w-25 p-4 mx-auto border border-danger mt-3 border border-5">
+				<div className="d-flex justify-content-center">
+					<h1>Things to do</h1>
+				</div>
+				<div className="d-flex justify-content-center input-group mb-3">
+					<input
+						type="text"
+						placeholder="Add Task"
+						onChange={(event) => {
+							setTask(event.target.value);
+						}}
+						value={task}
+						onKeyUp={(event) => {
+							if (task !== "" && event.key == "Enter") {
+								setList([...list, task]);
+								setTask("");
+							}
+						}}
+					/>
 
+					<button
+						onClick={() => {
+							if (task !== "") {
+								setList([...list, task]);
+								setTask("");
+							}
+						}}>
+						Submit
+					</button>
+				</div>
 				<ul>
 					{list.map((listItem, index) => {
 						return (
@@ -37,7 +48,7 @@ const Home = () => {
 									onClick={() => {
 										setList(
 											list.filter(
-												(item) => item !== listItem
+												(item, i) => i !== index
 											)
 										);
 									}}>
