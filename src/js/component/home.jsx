@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 
 //include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
 
 //create your first component
 const Home = () => {
 	const [task, setTask] = useState("");
 	const [list, setList] = useState([]);
+
+	fetch("https://assets.breatheco.de/apis/fake/todos/user/odettelittle")
+		.then((response) => response.json())
+		.then((result) => console.log(result))
+		.catch((error) => console.log("error", error));
+
 	return (
 		<>
 			<div className="card text-center  w-25 p-4 mx-auto border border-danger mt-3 border border-5">
