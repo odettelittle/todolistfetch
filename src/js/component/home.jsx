@@ -69,7 +69,7 @@ const Home = () => {
 			requestOptions
 		)
 			.then((response) =>
-				response.status === 200 ? setList(newList) : ""
+				response.status === 200 ? setList(itemDelete) : ""
 			)
 			.catch((error) => console.log("error", error));
 	};
